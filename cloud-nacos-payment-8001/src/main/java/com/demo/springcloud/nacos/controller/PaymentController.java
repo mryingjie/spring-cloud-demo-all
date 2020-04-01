@@ -30,11 +30,15 @@ public class PaymentController {
     public CommonResult create(@RequestBody Payment payment) {
         log.info("创建payment记录:param={}", JSON.toJSONString(payment));
         int result = paymentService.save(payment);
+        System.out.println();
         if (result > 0) {
             return new CommonResult(200, "插入成功", result);
         } else {
             return new CommonResult(444, "插入失败", null);
         }
+
+
+
     }
 
     @GetMapping(value = "/payment/{id}")
