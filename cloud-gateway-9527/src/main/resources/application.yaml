@@ -1,0 +1,31 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #开启注册中心路由功能
+      #          lower-case-service-id: true
+      routes:
+        - id: order_service1
+          #          uri: http://localhost:8001
+          uri: lb://cloud-order-service #此处如果有问题，请注意依赖spring-cloud-starter-netflix-eureka-client依赖不能错
+          predicates:
+            - Path=/order/**
+#          过滤器自定义  实现GlobalFilter 接口  和 Ordered接口
+
+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://localhost:7001/eureka
+#logging:
+#  level:
+#    root: debug
