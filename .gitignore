@@ -1,0 +1,33 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+将删除 cloud-api-commons/src/main/resources/
+将删除 cloud-api-commons/src/test/
+将删除 cloud-api-commons/target/
+将删除 cloud-eureka-server7001/src/test/
+将删除 cloud-eureka-server7001/target/
+将删除 cloud-feign-order-9001/src/test/
+将删除 cloud-feign-order-9001/target/
+将删除 cloud-gateway-9527/src/main/java/com/demo/springcloud/filter/
+将删除 cloud-gateway-9527/src/test/
+将删除 cloud-gateway-9527/target/
+将删除 cloud-hystrix-dashboard/src/test/
+将删除 cloud-hystrix-dashboard/target/
+将删除 cloud-nacos-order-9001/src/test/
+将删除 cloud-nacos-order-9001/target/
+将删除 cloud-nacos-payment-8001/src/test/
+将删除 cloud-nacos-payment-8001/target/
+将删除 cloud-order-80/src/test/
+将删除 cloud-order-80/target/
+将删除 cloud-payment-8001/src/test/
+将删除 cloud-payment-8001/target/
+将删除 cloud-zuul-9888/src/test/
+将删除 cloud-zuul-9888/target/
+将删除 spring-cloud-stream-rabbitmq8801/src/test/
+将删除 spring-cloud-stream-rabbitmq8801/target/

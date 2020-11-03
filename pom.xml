@@ -18,6 +18,8 @@
         <module>spring-cloud-stream-rabbitmq8801</module>
         <module>cloud-nacos-payment-8001</module>
         <module>cloud-nacos-order-9001</module>
+        <module>cloud-zuul-9888</module>
+        <module>cloud-oauth2</module>
     </modules>
     <packaging>pom</packaging>
 

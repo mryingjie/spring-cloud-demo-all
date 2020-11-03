@@ -1,0 +1,81 @@
+server:
+  port: 9888
+spring:
+  application:
+    name: cloud-zuul
+
+
+
+eureka:
+  instance:
+    hostname: cloud-zuul-service
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://localhost:7001/eureka
+#logging:
+#  level:
+
+#  ribbon和hystrix的timeout是同时生效的，哪个值小哪个生效，另一个就看不到效果了
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000
+#
+#ribbon:
+#  ReadTimeout: 2000
+#  SocketTimeout: 3000
+
+
+
+zuul:
+#  zuul.host.connect-timeout-millis， zuul.host.socket-timeout-millis这两个配置，这两个和上面的ribbon都是配超时的。
+#  区别在于，如果路由方式是serviceId的方式，那么ribbon的生效，如果是url的方式，则zuul.host开头的生效
+  host:
+    connect-timeout-millis: 2000
+    socket-timeout-millis: 1000
+  routes:
+    order:
+      path: //order/**
+      serviceId: cloud-order-service
+      strip-prefix: false
+    error: /error/**
+    payment:
+      path: /payment/**
+      serviceId: cloud-payment-service
+  sensitiveHeaders:
+
+  #https://github:com/archine/spring-cloud-zuul-ratelimit:
+  ratelimit:
+    #全局配置限流
+    repository:
+    enable: true
+    behind-proxy: true
+    default-policy-list:
+      #60s 内请求超过 3 次，服务端就抛出异常，60s 后可以恢复正常请求
+      limit: 3
+      refresh-interval: 60
+      ##针对 IP 进行限流，不影响其他 IP
+      type:
+        - url
+        -
+
+#    配置局部限流
+#    policy-list:
+#      order:
+#        - limit: 3
+#          refresh-interval: 60
+#          type: url
+#      payment:
+#        - limit: 3
+#          refresh-interval: 60
+#          type: url
+
+
+
+
+#    root: debug

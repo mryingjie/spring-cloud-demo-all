@@ -7,6 +7,8 @@ spring:
     name: cloud-order-service
 
 
+  jackson:
+    default-property-inclusion: non_null
 eureka:
   client:
     register-with-eureka: true   #自己作为客户端不需要注册进eureka
@@ -28,3 +30,6 @@ logging:
 feign:
   hystrix:
     enabled: true
+desensitization:
+  filed: id,serial,idList,serialList
+

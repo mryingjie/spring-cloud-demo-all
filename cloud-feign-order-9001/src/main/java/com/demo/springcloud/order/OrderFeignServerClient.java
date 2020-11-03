@@ -3,11 +3,14 @@ package com.demo.springcloud.order;
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
 
 /**
  * created by Yingjie Zheng at 2020-03-25 17:36
@@ -16,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @EnableFeignClients
 @EnableHystrix
+@ServletComponentScan
 public class OrderFeignServerClient {
 
 
@@ -38,6 +42,11 @@ public class OrderFeignServerClient {
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;
     }
+
+
+
+
+
 
 
 }

@@ -1,0 +1,15 @@
+@startuml
+
+客户端 -> robot_open_api: /x/oauth/create  通过userId  生成appKey appSecret
+robot_open_api -> 客户端: {"code":200,"appKey":""}
+
+客户端 -> robot_open_api: /x/oauth/list  查询用户下的appKey appSecret
+robot_open_api -> 客户端: {"code":200,data:[{"appKey":"","appSecret":""},{"appKey":"","appSecret":""}]}
+
+
+客户端 -> robot_open_api: /x/oauth/token?appKey=${appKey}&salt=${salt}&sign=${sign}   获取token
+robot_open_api --> 客户端: {"access_token":"","expire_in":"","token_type":"","scope":"all"}
+
+客户端 -> robot_open_api: /x/**   header->{"access_token":""}
+
+@enduml

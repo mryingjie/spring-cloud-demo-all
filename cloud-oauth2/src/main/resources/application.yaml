@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+  application:
+    name: cloud-oauth
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: zheng
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#    password: 123
+    database: 0
+
+
+logging:
+  level: debug
