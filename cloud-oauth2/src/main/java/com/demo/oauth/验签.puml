@@ -1,0 +1,6 @@
+@startuml
+客户端 -> robot_open_api: 业务请求'{"client_id":"","param":{},"sign":"client_id + client_secret + param 使用MD5(SHA256)算法生成签名"}'
+robot_open_api -> robot_open_api: client_id找到client_secret ,同样的算法验签
+robot_open_api -> robot_open_api: client_id找到recourse_id校验资源
+robot_open_api --> 客户端: 返回结果
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+前端 -> robot_open_api: /x/login  登录页面
+robot_open_api -> cas : 登录
+cas --> robot_open_api : 返回用户信息
+robot_open_api --> 前端 : 返回用户信息
+
+
+
+
+
+
+前端 -> robot_open_api: /x/oauth/create  创建client_id client_secret
+robot_open_api -> robot_open_api : 通过userId  生成client_id client_secret  cluster_id(resource_id)
+robot_open_api --> 前端: {"code":200,"appKey":""}
+
+
+
+前端 -> robot_open_api: /x/oauth/list   查询client_id client_secret
+robot_open_api --> 前端: {"code":200,data:[{"appKey":"","appSecret":""},{"appKey":"","appSecret":""}]}
+
+
+@enduml

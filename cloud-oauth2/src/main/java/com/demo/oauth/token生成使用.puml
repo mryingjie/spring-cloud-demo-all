@@ -1,0 +1,12 @@
+@startuml
+
+客户端 -> robot_open_api: /x/oauth/token?grant_type=client_credentials&client_id=${client_id}&client_secret=${secret} 获取token
+robot_open_api --> 客户端: {"access_token":" ","expire_in":" ","token_type":"","refresh_token":"","scope":"all"}
+
+客户端 -> robot_open_api: /x/*?access_token=""   请求业务接口
+robot_open_api -> robot_open_api: access_token映射为client_id ，client_id 映射为resource_id  通过resource_id检查请求资源是否是合法
+robot_open_api --> 客户端 : 返回结果
+
+客户端 -> robot_open_api: /x/oauth/token?grant_type=refresh_token&client_id=${client_id}&client_secret=${secret} 获取新token
+robot_open_api --> 客户端: {"access_token":" ","expire_in":" ","token_type":"","refresh_token":"","scope":"all"}
+@enduml
