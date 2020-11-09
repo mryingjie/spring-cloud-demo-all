@@ -17,7 +17,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.*;
 import org.springframework.security.oauth2.provider.approval.DefaultUserApprovalHandler;
 import org.springframework.security.oauth2.provider.client.ClientCredentialsTokenGranter;
-import org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeTokenGranter;
@@ -29,7 +28,6 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.annotation.Resource;
@@ -79,8 +77,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
         // token有效期，设置12小时
         tokenServices.setAccessTokenValiditySeconds(300);
         tokenServices.setSupportRefreshToken(true);
-        tokenServices.setRefreshTokenValiditySeconds(-1);
-        tokenServices.setReuseRefreshToken(true);
+        tokenServices.setRefreshTokenValiditySeconds(600);
+        tokenServices.setReuseRefreshToken(false);
         return tokenServices;
     }
 
